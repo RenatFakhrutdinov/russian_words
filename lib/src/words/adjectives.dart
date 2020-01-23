@@ -1,4 +1,4 @@
-///The most common Russian nouns
+///The most common Russian adjectives
 
 const List<String> adjectives = [
   'тот',
