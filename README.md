@@ -1,6 +1,6 @@
 # russian_words
 
-A new Flutter package.
+A package containing ~33000 the most common Russian words and some utility functions.
 
 ## Getting Started
 
