@@ -85,4 +85,12 @@ class WordPair {
           "Received: '$first', '$second'");
     }
   }
+
+  factory WordPair.random(
+      {TypeOfPair typeOfPair = TypeOfPair.randomPair, Random random}) {
+    random ??= _random;
+    final pairsIterable =
+        generateWordPairs(typeOfPair: typeOfPair, random: random);
+    return pairsIterable.first;
+  }
 }
