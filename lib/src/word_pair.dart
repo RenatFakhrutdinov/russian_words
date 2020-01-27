@@ -1,21 +1,26 @@
 import 'dart:math';
 
+import 'words/adjectives.dart';
+import 'words/all_words.dart';
+import 'words/nouns.dart';
+import 'words/verbs.dart';
+
 /// Representation of a combination of 2 words, [first] and [second].
 
 final _random = Random();
 
 enum TypeOfPair {
-  adjective_adjective,
-  noun_noun,
-  verb_verb,
-  adjective_noun,
-  verb_adjective,
-  verb_noun,
-  random_pair
+  adjectiveAdjective,
+  nounNoun,
+  verbVerb,
+  adjectiveNoun,
+  verbAdjective,
+  verbNoun,
+  randomPair
 }
 
 Iterable<WordPair> generateWordPairs(
-    {TypeOfPair typeOfPair = TypeOfPair.random_pair, Random random}) sync* {
+    {TypeOfPair typeOfPair = TypeOfPair.randomPair, Random random}) sync* {
   random ??= _random;
 
   String pickRandom(List<String> list) => list[random.nextInt(list.length)];
@@ -26,7 +31,36 @@ Iterable<WordPair> generateWordPairs(
     String firstWord;
     String secondWord;
 
-    ///todo creating pairs depending on TypeOfPair
+    switch (typeOfPair) {
+      case TypeOfPair.adjectiveAdjective:
+        firstWord = pickRandom(adjectives);
+        secondWord = pickRandom(adjectives);
+        break;
+      case TypeOfPair.nounNoun:
+        firstWord = pickRandom(nouns);
+        secondWord = pickRandom(nouns);
+        break;
+      case TypeOfPair.verbVerb:
+        firstWord = pickRandom(verbs);
+        secondWord = pickRandom(verbs);
+        break;
+      case TypeOfPair.adjectiveNoun:
+        firstWord = pickRandom(adjectives);
+        secondWord = pickRandom(nouns);
+        break;
+      case TypeOfPair.verbAdjective:
+        firstWord = pickRandom(verbs);
+        secondWord = pickRandom(adjectives);
+        break;
+      case TypeOfPair.verbNoun:
+        firstWord = pickRandom(verbs);
+        secondWord = pickRandom(nouns);
+        break;
+      case TypeOfPair.randomPair:
+        firstWord = pickRandom(allWords);
+        secondWord = pickRandom(allWords);
+        break;
+    }
 
     final WordPair wordPair = WordPair(firstWord, secondWord);
 

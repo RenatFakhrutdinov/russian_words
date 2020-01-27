@@ -1,6 +1,6 @@
 ///The most common Russian words
 
-const List<String> all = [
+const List<String> allWords = [
   'весь',
   'человек',
   'время',
