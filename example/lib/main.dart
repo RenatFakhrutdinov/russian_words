@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Widget> _widgetOptions = [
     SingleWord(),
-    Text('2'),
+    RandomPair(),
   ];
 
   void _onItemTapped(int index) {
@@ -77,7 +77,7 @@ class _SingleWordState extends State<SingleWord> {
   @override
   void initState() {
     super.initState();
-    _word = _randomWord();
+    _word ??= _randomWord();
   }
 
   String _randomWord() {
@@ -177,6 +177,154 @@ class _SingleWordState extends State<SingleWord> {
         RaisedButton(
           child: Text("change word"),
           onPressed: () => setState(() => _word = _randomWord()),
+        )
+      ],
+    );
+  }
+}
+
+class RandomPair extends StatefulWidget {
+  @override
+  _RandomPairState createState() => _RandomPairState();
+}
+
+class _RandomPairState extends State<RandomPair> {
+  String _pair;
+  TypeOfPair _typeOfPair = TypeOfPair.randomPair;
+
+  @override
+  void initState() {
+    super.initState();
+    _pair ??= WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Text(
+          "Random pair is",
+          textAlign: TextAlign.center,
+        ),
+        Container(
+          padding: EdgeInsets.all(8),
+          decoration:
+              BoxDecoration(border: Border.all(), color: Colors.blue.shade50),
+          width: MediaQuery.of(context).size.width,
+          child: Text(
+            _pair,
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        Column(
+          children: <Widget>[
+            Text('Choose type of pair'),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: TypeOfPair.randomPair,
+                  groupValue: _typeOfPair,
+                  onChanged: (type) => setState(() {
+                    _typeOfPair = type;
+                    _pair =
+                        WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+                  }),
+                ),
+                Text('RandomPair'),
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: TypeOfPair.adjectiveAdjective,
+                  groupValue: _typeOfPair,
+                  onChanged: (type) => setState(() {
+                    _typeOfPair = type;
+                    _pair =
+                        WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+                  }),
+                ),
+                Text('AdjectiveAdjective')
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: TypeOfPair.nounNoun,
+                  groupValue: _typeOfPair,
+                  onChanged: (type) => setState(() {
+                    _typeOfPair = type;
+                    _pair =
+                        WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+                  }),
+                ),
+                Text('NounNoun')
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: TypeOfPair.verbVerb,
+                  groupValue: _typeOfPair,
+                  onChanged: (type) => setState(() {
+                    _typeOfPair = type;
+                    _pair =
+                        WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+                  }),
+                ),
+                Text('VerbVerb')
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: TypeOfPair.adjectiveNoun,
+                  groupValue: _typeOfPair,
+                  onChanged: (type) => setState(() {
+                    _typeOfPair = type;
+                    _pair =
+                        WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+                  }),
+                ),
+                Text('AdjectiveNoun')
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: TypeOfPair.verbAdjective,
+                  groupValue: _typeOfPair,
+                  onChanged: (type) => setState(() {
+                    _typeOfPair = type;
+                    _pair =
+                        WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+                  }),
+                ),
+                Text('VerbAdjective')
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: TypeOfPair.verbNoun,
+                  groupValue: _typeOfPair,
+                  onChanged: (type) => setState(() {
+                    _typeOfPair = type;
+                    _pair =
+                        WordPair.random(typeOfPair: _typeOfPair).asPascalCase;
+                  }),
+                ),
+                Text('VerbNoun')
+              ],
+            ),
+          ],
+        ),
+        RaisedButton(
+          child: Text("change word"),
+          onPressed: () => setState(() =>
+              _pair = WordPair.random(typeOfPair: _typeOfPair).asPascalCase),
         )
       ],
     );
