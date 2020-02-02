@@ -107,28 +107,21 @@ class WordPair {
   }
 
   /// Returns the word pair as a simple string, with second word capitalized,
-  /// like `"keyFrame"` or `"franceLand"`. This is informally called
-  /// "camel case".
   String get asCamelCase => _asCamelCase ??= _createCamelCase();
 
   /// Returns the word pair as a simple string, in lower case,
-  /// like `"keyframe"` or `"franceland"`.
   String get asLowerCase => _asLowerCase ??= asString.toLowerCase();
 
   /// Returns the word pair as a simple string, with each word capitalized,
-  /// like `"KeyFrame"` or `"BigUsa"`. This is informally called "pascal case".
   String get asPascalCase => _asPascalCase ??= _createPascalCase();
 
   /// Returns the word pair as a simple string, separated by an underscore,
-  /// like `"key_frame"` or `"big_usa"`. This is informally called "snake case".
   String get asSnakeCase => _asSnakeCase ??= _createSnakeCase();
 
   /// Returns the word pair as a simple string, like `"keyframe"`
-  /// or `"bigFrance"`.
   String get asString => _asString ??= '$first$second';
 
   /// Returns the word pair as a simple string, in upper case,
-  /// like `"KEYFRAME"` or `"FRANCELAND"`.
   String get asUpperCase => _asUpperCase ??= asString.toUpperCase();
 
   @override
@@ -146,8 +139,6 @@ class WordPair {
 
   /// Returns a string representation of the [WordPair] where the two parts
   /// are joined by [separator].
-  ///
-  /// For example, `new WordPair('mine', 'craft').join()` returns `minecraft`.
   String join([String separator = '']) => '$first$separator$second';
 
   /// Creates a new [WordPair] with both parts in lower case.
@@ -164,5 +155,5 @@ class WordPair {
 
   String _createPascalCase() => "${_capitalize(first)}${_capitalize(second)}";
 
-  String _createSnakeCase() => "${first}_${second}";
+  String _createSnakeCase() => "${first}_$second";
 }
