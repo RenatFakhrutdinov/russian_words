@@ -4,7 +4,6 @@ description: >
   well-sounding word combinations, and provides access to ~33000 Russian
   words.
 version: 0.0.1
-author: Renat Fakhrutdinov <rfakhrutdinov1988@gmail.com>
 homepage: https://github.com/RenatFakhrutdinov/russian_words
 
 environment:
