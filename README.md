@@ -1,5 +1,7 @@
 # russian_words
 
+[![Pub](https://img.shields.io/pub/v/russian_words)](https://pub.dev/packages/russian_words)
+
 A package containing ~33000 the most common Russian words and some utility functions.
 
 ## Usage
