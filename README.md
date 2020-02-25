@@ -28,7 +28,7 @@ Generating 5 interesting word combinations:
 
 generateWordPairs().take(5).forEach(print);
 
-///create 5 verb + noun combination
+///create 5 verb + noun combinations
 generateWordPairs(typeOfPair: TypeOfPair.verbNoun).take(5).forEach(print);
 
 ```
