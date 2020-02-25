@@ -3,7 +3,7 @@ description: >
   Utilities for working with Russian words. Generates
   well-sounding word combinations, and provides access to ~33000 Russian
   words.
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/RenatFakhrutdinov/russian_words
 
 environment:
