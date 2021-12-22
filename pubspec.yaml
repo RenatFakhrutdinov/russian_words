@@ -7,11 +7,11 @@ version: 0.1.0
 homepage: https://github.com/RenatFakhrutdinov/russian_words
 
 environment:
-  sdk: ">=2.0.0 <3.0.0"
+  sdk: ">=2.13.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  test: ^1.11.1
+  test: ^1.20.1

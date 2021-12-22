@@ -20,10 +20,10 @@ enum TypeOfPair {
 }
 
 Iterable<WordPair> generateWordPairs(
-    {TypeOfPair typeOfPair = TypeOfPair.randomPair, Random random}) sync* {
-  random ??= _random;
+    {TypeOfPair typeOfPair = TypeOfPair.randomPair, Random? random}) sync* {
+  final rand = random ?? _random;
 
-  String pickRandom(List<String> list) => list[random.nextInt(list.length)];
+  String pickRandom(List<String> list) => list[rand.nextInt(list.length)];
 
   // We're in a sync* function, so `while (true)` is okay.
   // ignore: literal_only_boolean_expressions
@@ -75,23 +75,19 @@ class WordPair {
   /// The second part of the pair.
   final String second;
 
-  String _asPascalCase;
-
-  String _asSnakeCase;
-
-  String _asCamelCase;
-
-  String _asLowerCase;
-
-  String _asUpperCase;
-
-  String _asString;
+  // String _asPascalCase;
+  //
+  // String _asSnakeCase;
+  //
+  // String _asCamelCase;
+  //
+  // String _asLowerCase;
+  //
+  // String _asUpperCase;
+  //
+  // String _asString;
 
   WordPair(this.first, this.second) {
-    if (first == null || second == null) {
-      throw ArgumentError("Words of WordPair cannot be null. "
-          "Received: '$first', '$second'");
-    }
     if (first.isEmpty || second.isEmpty) {
       throw ArgumentError("Words of WordPair cannot be empty. "
           "Received: '$first', '$second'");
@@ -99,30 +95,30 @@ class WordPair {
   }
 
   factory WordPair.random(
-      {TypeOfPair typeOfPair = TypeOfPair.randomPair, Random random}) {
+      {TypeOfPair typeOfPair = TypeOfPair.randomPair, Random? random}) {
     random ??= _random;
     final pairsIterable =
         generateWordPairs(typeOfPair: typeOfPair, random: random);
     return pairsIterable.first;
   }
 
-  /// Returns the word pair as a simple string, with second word capitalized,
-  String get asCamelCase => _asCamelCase ??= _createCamelCase();
+  /// Returns the word pair as a simple string, with second word capitalized.
+  late final String asCamelCase = _createCamelCase();
 
-  /// Returns the word pair as a simple string, in lower case,
-  String get asLowerCase => _asLowerCase ??= asString.toLowerCase();
+  /// Returns the word pair as a simple string, in lower case.
+  late final String asLowerCase = asString.toLowerCase();
 
-  /// Returns the word pair as a simple string, with each word capitalized,
-  String get asPascalCase => _asPascalCase ??= _createPascalCase();
+  /// Returns the word pair as a simple string, with each word capitalized.
+  late final String asPascalCase = _createPascalCase();
 
-  /// Returns the word pair as a simple string, separated by an underscore,
-  String get asSnakeCase => _asSnakeCase ??= _createSnakeCase();
+  /// Returns the word pair as a simple string, separated by an underscore.
+  late final String asSnakeCase = _createSnakeCase();
 
-  /// Returns the word pair as a simple string, like `"keyframe"`
-  String get asString => _asString ??= '$first$second';
+  /// Returns the word pair as a simple string.
+  late final String asString = '$first$second';
 
-  /// Returns the word pair as a simple string, in upper case,
-  String get asUpperCase => _asUpperCase ??= asString.toUpperCase();
+  /// Returns the word pair as a simple string, in upper case.
+  late final String asUpperCase = asString.toUpperCase();
 
   @override
   int get hashCode =>

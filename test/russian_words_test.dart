@@ -61,11 +61,6 @@ void main() {
     expect(() => WordPair.random(), returnsNormally);
   });
 
-  test('WordPair throws on null members', () {
-    expect(() => WordPair("сложный", null), throwsArgumentError);
-    expect(() => WordPair(null, "озеро"), throwsArgumentError);
-  });
-
   test('WordPair throws on empty members', () {
     expect(() => WordPair("сложный", ""), throwsArgumentError);
     expect(() => WordPair("", "озеро"), throwsArgumentError);
